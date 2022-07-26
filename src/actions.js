@@ -6,4 +6,4 @@ export const SET = 'SET';
 // ACTION CREATORS ///////////////////
 export const increment = () => ({ type: INCREMENT });
 export const decrement = () => ({ type: DECREMENT });
-export const set = (set) => ({ type: SET, payload: value });
+export const set = (value) => ({ type: SET, payload: value });
