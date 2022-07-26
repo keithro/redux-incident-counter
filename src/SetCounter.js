@@ -1,10 +1,18 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { set } from './actions';
 
 export const SetCounter = () => {
-  const [count, setCount] = useState(0);
+  // Getting and updating count from our store
+  const countFromStore = useSelector((state) => state.count);
+  // setting count's initial value to our count from strore
+  const [count, setCount] = useState(countFromStore);
   const dispatch = useDispatch();
+  // Updating the count state every time our store is updated (keeping it up-to-date)
+  useEffect(() => {
+    setCount(countFromStore);
+  }, [countFromStore]);
+
   return (
     <section className="controls">
       <form
